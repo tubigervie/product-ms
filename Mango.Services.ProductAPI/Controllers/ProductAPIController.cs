@@ -60,7 +60,7 @@ namespace Mango.Services.ProductAPI.Controllers
             return Ok(_response);
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
