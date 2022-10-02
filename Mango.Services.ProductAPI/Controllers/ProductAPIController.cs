@@ -1,5 +1,6 @@
 ﻿using Mango.Services.ProductAPI.Models.Dto;
 using Mango.Services.ProductAPI.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mango.Services.ProductAPI.Controllers
@@ -17,6 +18,7 @@ namespace Mango.Services.ProductAPI.Controllers
             _response = new ResponseDto();
         }
 
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,6 +38,7 @@ namespace Mango.Services.ProductAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -57,6 +60,7 @@ namespace Mango.Services.ProductAPI.Controllers
             return Ok(_response);
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -76,6 +80,7 @@ namespace Mango.Services.ProductAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = productDto.ProductId }, _response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -95,6 +100,7 @@ namespace Mango.Services.ProductAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = productDto.ProductId }, _response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
