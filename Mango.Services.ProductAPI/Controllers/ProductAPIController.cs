@@ -18,7 +18,6 @@ namespace Mango.Services.ProductAPI.Controllers
             _response = new ResponseDto();
         }
 
-        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -38,7 +37,6 @@ namespace Mango.Services.ProductAPI.Controllers
             }
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
